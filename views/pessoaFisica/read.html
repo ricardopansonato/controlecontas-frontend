@@ -1,0 +1,37 @@
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#/pessoaFisica/">Pessoa Fisica</a></li>
+  <li role="presentation"><a href="#/pessoaJuridica/">Pessoa Juridica</a></li>
+  <li role="presentation"><a href="#/conta/">Conta</a></li>
+</ul>
+<div class="col-md-12">
+<div class="row">
+	<h2 class="text-center panel-title"><u>Pessoa Física</u></h2>
+</div>
+<div class="row">
+<a href="#/pessoaFisica/create" class="btn btn-primary">Cadastrar</a>
+</div>
+<br/>
+<div class="row">
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Nome</td>
+			<td>CPF</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in pessoaFisica">
+		<td>{{item.id}}</td>
+		<td>{{item.nome}}</td>
+		<td>{{item.cpf}}</td>
+		<td><a href="#/pessoaFisica/edit/{{item.id}}" class="btn btn-info btn-block">Editar</a></td>
+		<td><button ng-click="deletar(item.id)" class="btn btn-danger btn-block">Deletar</button></td>
+		</tr>
+	</tbody>
+</table>
+	
+</div>
+</div>
