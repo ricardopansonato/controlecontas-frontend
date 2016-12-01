@@ -57,4 +57,4 @@ Contas.config(function($routeProvider){
 	})
 });
 
-Contas.value('api', 'http://localhost:8080/');
+Contas.value('api', 'https://hubfintech-api.herokuapp.com/');
