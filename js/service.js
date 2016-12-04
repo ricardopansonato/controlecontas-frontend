@@ -52,7 +52,7 @@ Contas.factory('conta', function($http, api){
 			return $http.get(api + 'conta/' + id);	
 		},
 		update: function(item, id){
-			return $http.put(api + 'conta/' + id, item);	
+			return $http.patch(api + 'conta/' + id, item);	
 		},
 		delete: function(id){
 			return $http.delete(api + 'conta/' + id);
