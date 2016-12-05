@@ -6,7 +6,7 @@
 </ul>
 <div class="col-md-12">
 <div class="row">
-	<h2 class="text-center panel-title"><u>Conta</u></h2>
+	<h2 class="text-center panel-title"><u>Transação</u></h2>
 </div>
 <div class="row">
 <a href="#/transacao/create" class="btn btn-primary">Cadastrar</a>
@@ -22,7 +22,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="item in conta">
+		<tr ng-repeat="item in transacao">
 		<td>{{item.id}}</td>
 		<td>{{item.contaOrigem.nome}}</td>
 		<td><button ng-click="deletar(item.id)" class="btn btn-danger btn-block">Deletar</button></td>
