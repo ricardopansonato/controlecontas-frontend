@@ -189,7 +189,7 @@ Contas.controller('ContaEditCtrl', function($scope, conta, pessoaFisica, pessoaJ
 	}
 });	
 
-Contas.controller('TransacaoReadCtrl', function($scope, conta, transacao, $route){
+Contas.controller('TransacaoReadCtrl', function($scope, conta, transacao, $route, $location){
 	$scope.transacoes = null;
 	transacao.read().then(function(data){
 		$scope.transacoes = data.data._embedded.transacao;
@@ -213,12 +213,20 @@ Contas.controller('TransacaoReadCtrl', function($scope, conta, transacao, $route
 
 	$scope.estornar = function(item){
 		var contaOrigem = item.contaOrigem;
-		delete item['id'];
-		item.contaOrigem = item.contaDestino;
-		item.contaDestino = contaOrigem;
-		transacao.create(item).then(function(data){
-			$route.reload();
-		});	
+		console.log(item);
+		
+		if (item.contaOrigemObj.contaPai == null) {
+			$location.path('/transacao/estornar/' + item.id);
+		} else {
+			delete item['id'];
+			var contaOrigem = item.contaOrigem;
+			item.contaOrigem = item.contaDestino;
+			item.contaDestino = contaOrigem;
+			transacao.create(item).then(function(data){
+				$route.reload();
+			});				
+		}
+
 	}
 });	
 
@@ -231,6 +239,29 @@ Contas.controller('TransacaoCreateCtrl', function($scope, conta, transacao, $loc
 	});
 	$scope.cadastrar = function(item){
 		transacao.create(item).then(function(data){
+			$location.path('/transacao/');
+		});
+	}
+});	
+
+
+Contas.controller('TransacaoEstornarCtrl', function($scope, $routeParams, transacao, $location){
+	var id = $routeParams.id;
+	$scope.transacao = null;
+	transacao.profile(id).then(function(data){
+		$scope.transacao = data.data;
+	}, function(data) {
+		console.log(data);
+	});
+
+	$scope.estornar = function(item){
+		$scope.transacao.aporte = item.aporte;
+		delete $scope.transacao['id'];
+		var contaOrigem = $scope.transacao.contaOrigem;
+		$scope.transacao.contaOrigem = $scope.transacao.contaDestino;
+		$scope.transacao.contaDestino = contaOrigem;
+		console.log($scope.transacao);
+		transacao.create($scope.transacao).then(function(data){
 			$location.path('/transacao/');
 		});
 	}

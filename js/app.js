@@ -65,6 +65,11 @@ Contas.config(function($routeProvider){
 		templateUrl: 'views/transacao/create.html',
 		controller: 'TransacaoCreateCtrl'
 	})
+
+	.when('/transacao/estornar/:id', {
+		templateUrl: 'views/transacao/estornaMatriz.html',
+		controller: 'TransacaoEstornarCtrl'
+	})
 });
 
 Contas.value('api', 'https://hubfintech-api.herokuapp.com/');
