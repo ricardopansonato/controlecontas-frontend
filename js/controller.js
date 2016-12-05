@@ -189,10 +189,24 @@ Contas.controller('ContaEditCtrl', function($scope, conta, pessoaFisica, pessoaJ
 	}
 });	
 
-Contas.controller('TransacaoReadCtrl', function($scope, transacao, $route){
+Contas.controller('TransacaoReadCtrl', function($scope, conta, transacao, $route){
 	$scope.transacoes = null;
 	transacao.read().then(function(data){
 		$scope.transacoes = data.data._embedded.transacao;
+		conta.read().then(function(data){
+			$scope.contas = data.data._embedded.conta;
+			for (var i in $scope.transacoes) {
+				$scope.transacoes[i].contaOrigemObj = $scope.contas.filter(function(v) {
+				    return v.id === $scope.transacoes[i].contaOrigem;
+				})[0];
+
+				$scope.transacoes[i].contaDestinoObj = $scope.contas.filter(function(v) {
+				    return v.id === $scope.transacoes[i].contaDestino;
+				})[0];
+			}
+		},function(data){
+			console.log("data", data);
+		});
 	},function(data){
 		console.log("data", data);
 	});

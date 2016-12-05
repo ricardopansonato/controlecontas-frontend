@@ -17,14 +17,18 @@
 	<thead>
 		<tr>
 			<td>ID</td>
-			<td>Nome</td>
+			<td>Conta Origem</td>
+			<td>Conta Destino</td>
+			<td>Valor</td>
 			<td></td>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="item in transacao">
+		<tr ng-repeat="item in transacoes">
 		<td>{{item.id}}</td>
-		<td>{{item.contaOrigem.nome}}</td>
+		<td>{{item.contaOrigemObj.nome}}</td>
+		<td>{{item.contaDestinoObj.nome}}</td>
+		<td>{{item.valor}}</td>
 		<td><button ng-click="deletar(item.id)" class="btn btn-danger btn-block">Deletar</button></td>
 		</tr>
 	</tbody>
