@@ -55,6 +55,16 @@ Contas.config(function($routeProvider){
 		templateUrl: 'views/conta/edit.html',
 		controller: 'ContaEditCtrl'
 	})
+
+	.when('/transacao/', {
+		templateUrl: 'views/transacao/read.html',
+		controller: 'TransacaoReadCtrl'
+	})
+
+	.when('/transacao/create', {
+		templateUrl: 'views/transacao/create.html',
+		controller: 'TransacaoCreateCtrl'
+	})
 });
 
-Contas.value('api', 'https://hubfintech-api.herokuapp.com/');
+Contas.value('api', 'http://localhost:8080/');

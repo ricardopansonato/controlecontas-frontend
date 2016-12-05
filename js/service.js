@@ -52,10 +52,30 @@ Contas.factory('conta', function($http, api){
 			return $http.get(api + 'conta/' + id);	
 		},
 		update: function(item, id){
-			return $http.patch(api + 'conta/' + id, item);	
+			return $http.put(api + 'conta/' + id, item);	
 		},
 		delete: function(id){
 			return $http.delete(api + 'conta/' + id);
+		}
+	}
+});
+
+Contas.factory('transacao', function($http, api){
+	return {
+		read: function(){
+			return $http.get(api + 'transacao');
+		},
+		create: function(item){
+			return $http.post(api + 'transacao', item);
+		},
+		profile: function(id){
+			return $http.get(api + 'transacao/' + id);	
+		},
+		update: function(item, id){
+			return $http.put(api + 'transacao/' + id, item);	
+		},
+		delete: function(id){
+			return $http.delete(api + 'transacao/' + id);
 		}
 	}
 });

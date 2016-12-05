@@ -1,15 +1,15 @@
 <ul class="nav nav-tabs">
   <li role="presentation"><a href="#/pessoaFisica/">Pessoa Fisica</a></li>
   <li role="presentation"><a href="#/pessoaJuridica/">Pessoa Juridica</a></li>
-  <li role="presentation" class="active"><a href="#/conta/">Conta</a></li>
-  <li role="presentation"><a href="#/transacao/">Transação</a></li>
+  <li role="presentation"><a href="#/conta/">Conta</a></li>
+  <li role="presentation" class="active"><a href="#/transacao/">Transação</a></li>
 </ul>
 <div class="col-md-12">
 <div class="row">
 	<h2 class="text-center panel-title"><u>Conta</u></h2>
 </div>
 <div class="row">
-<a href="#/conta/create" class="btn btn-primary">Cadastrar</a>
+<a href="#/transacao/create" class="btn btn-primary">Cadastrar</a>
 </div>
 <br/>
 <div class="row">
@@ -19,14 +19,12 @@
 			<td>ID</td>
 			<td>Nome</td>
 			<td></td>
-			<td></td>
 		</tr>
 	</thead>
 	<tbody>
 		<tr ng-repeat="item in conta">
 		<td>{{item.id}}</td>
-		<td>{{item.nome}}</td>
-		<td><a href="#/conta/edit/{{item.id}}" class="btn btn-info btn-block">Editar</a></td>
+		<td>{{item.contaOrigem.nome}}</td>
 		<td><button ng-click="deletar(item.id)" class="btn btn-danger btn-block">Deletar</button></td>
 		</tr>
 	</tbody>
