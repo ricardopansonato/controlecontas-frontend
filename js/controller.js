@@ -211,9 +211,12 @@ Contas.controller('TransacaoReadCtrl', function($scope, conta, transacao, $route
 		console.log("data", data);
 	});
 
-	$scope.deletar = function(id){
-		transacao.delete(id).then(function(data){
-			console.log(data);
+	$scope.estornar = function(item){
+		var contaOrigem = item.contaOrigem;
+		delete item['id'];
+		item.contaOrigem = item.contaDestino;
+		item.contaDestino = contaOrigem;
+		transacao.create(item).then(function(data){
 			$route.reload();
 		});	
 	}
